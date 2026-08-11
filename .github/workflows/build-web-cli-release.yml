@@ -110,7 +110,10 @@ jobs:
           test -n "$archive"
           checksum="${archive}.sha256"
           test -f "$checksum"
-          sha256sum -c "$checksum"
+          (
+            cd "$(dirname "$archive")"
+            sha256sum -c "$(basename "$checksum")"
+          )
           tar -tzf "$archive" | grep -Fx 'aionui-web/aionui-web'
           tar -tzf "$archive" | grep -Fx 'aionui-web/static/index.html'
           tar -tzf "$archive" | grep -F 'aionui-web/bundled-aioncore/linux-x64/aioncore'
