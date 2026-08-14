@@ -3,16 +3,16 @@ name: Build Web CLI Release
 on:
   push:
     tags:
-      - "v*"
+      - 'v*'
   workflow_dispatch:
     inputs:
       ref:
-        description: "Git ref to build (for example, v2.1.53 or main)"
+        description: 'Git ref to build (for example, v2.1.53 or main)'
         required: true
         default: main
         type: string
       tag:
-        description: "Release tag to create or update (for example, v2.1.53)"
+        description: 'Release tag to create or update (for example, v2.1.53)'
         required: true
         type: string
 
@@ -46,7 +46,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "22"
+          node-version: '22'
 
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
